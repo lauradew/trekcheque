@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-brand-name">Trek Cheque</div>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+      <div class="right">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="nav-item">
+            <% if current_user %>
+              <a class-"nav-link" href="/trips/new">Create Trip</a>
+            <% end %>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <% if current_user %>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                Signed in as <%= current_user.name %>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item"><%=link_to 'Home Page', user_path(current_user.id)%></li>
+                <li class="dropdown-item"><%=link_to 'Logout', logout_path %></li>
+              </ul>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link" href="login_path">Login/Register</a>
+              </li>
+            <% end %>
+          </li>
+        </ul>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>

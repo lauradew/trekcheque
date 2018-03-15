@@ -10,6 +10,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user_as_attendees = Attendee.where(user_id: params[:id])
+    @trips_of_user = @user.trips.order('start_date')
+    if params[:id].to_i != current_user[:id].to_i
+      redirect_to user_path(session[:user_id])
+    end
   end
 
   # GET /users/new
