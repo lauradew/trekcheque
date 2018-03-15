@@ -173,7 +173,15 @@ class ExpensesController < ApplicationController
 
   def inline_edit
     # @attendees = Attendee.where(trip_id: params[:id])
-    @attendees = @expense.payees.all
+    @attendees = Attendee.where(trip_id: params[:trip_id])
+    #@attendees = @expense.payees.all
+    puts
+    puts
+    puts
+    puts
+    puts 'EXPENSE PAYEE'
+    puts @expense.payees
+    puts @expense.user_id
     @trip_attendees = @attendees.collect { |a| a.user }
     respond_to do |format|
       format.js { render :file => "trips/inline_edit.js.erb" } # create a file named inline_edit.js.erb
@@ -192,6 +200,14 @@ class ExpensesController < ApplicationController
       @amount = @expense.amount
       p @willing_payees
       @payee_size = @willing_payees.count
+      puts
+      puts
+      puts
+      puts
+      puts
+      puts
+      puts
+      puts '===========payeesize======'
       puts @payee_size
       @payee_owes = (@amount / @payee_size) 
       @willing_payees.each do |payee|
@@ -207,6 +223,22 @@ class ExpensesController < ApplicationController
       end
 
         @attendee_payer_of_expense = Attendee.where(user_id: @expense.user_id, trip_id: params[:trip_id].to_i).first
+        puts 
+        puts 
+        puts 
+        puts 
+        puts 
+        puts 
+        puts 
+        puts '======payeeowes========='
+        puts @payee_owes
+        puts
+        puts
+        puts
+        puts
+        puts
+        puts '========payeesize======='
+        puts @payee_size
         @gets_back = (@payee_owes * @payee_size)
         @payer_balance = @attendee_payer_of_expense.balance + @gets_back
         @attendee_payer_of_expense.update_attribute(:balance, @payer_balance)
