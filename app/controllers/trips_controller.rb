@@ -15,6 +15,14 @@ class TripsController < ApplicationController
     @trips = Trip.all
     @message = Message.new
     @messages = Message.where(trip_id: params[:trip_id])
+    puts
+    puts
+    puts
+    puts
+    puts
+    puts
+    puts 'messages'
+    puts @messages
     @expense = Expense.new
     @new_trip = Trip.new
     @attendees = Attendee.where(trip_id: params[:trip_id])
