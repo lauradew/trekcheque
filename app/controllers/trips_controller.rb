@@ -11,18 +11,10 @@ class TripsController < ApplicationController
   # GET /trips/1
   # GET /trips/1.json
   def show
-    @trip_types = [["Weekend Getaway", 1], ["Boys Trip", 2], ["Bachelorette", 3], ["Road Trip", 4], ["Adventure", 5]]
+    @trip_types = [["Weekend Getaway", 1], ["Boys Trip", 2], ["Bachelorette", 3], ["Road Trip", 4], ["Adventure", 5], ["Other", 6]]
     @trips = Trip.all
     @message = Message.new
     @messages = Message.where(trip_id: params[:trip_id])
-    puts
-    puts
-    puts
-    puts
-    puts
-    puts
-    puts 'messages'
-    puts @messages
     @expense = Expense.new
     @new_trip = Trip.new
     @attendees = Attendee.where(trip_id: params[:trip_id])
@@ -149,7 +141,7 @@ class TripsController < ApplicationController
   def new
     @new_trip = Trip.new
     @trip = Trip.new
-    @trip_types = [["Weekend Getaway", 1], ["Boys Trip", 2], ["Bachelorette", 3], ["Road Trip", 4], ["Adventure", 5]]
+    @trip_types = [["Weekend Getaway", 1], ["Boys Trip", 2], ["Bachelorette", 3], ["Road Trip", 4], ["Adventure", 5], ["Other", 6]]
   end
     
   # function used for edit trip modal!
@@ -167,7 +159,7 @@ class TripsController < ApplicationController
   def create
     @new_trip = Trip.create(trip_params)
     @trip = Trip.new(trip_params)
-    @trip_types = [["Weekend Getaway", 1], ["Boys Trip", 2], ["Bachelorette", 3], ["Road Trip", 4], ["Adventure", 5]]
+    @trip_types = [["Weekend Getaway", 1], ["Boys Trip", 2], ["Bachelorette", 3], ["Road Trip", 4], ["Adventure", 5], ["Other", 6]]
     # @first_attendee -> add the current user as an attendee automatically - when creating a trip
     @first_attendee = Attendee.create!([{trip_id: @new_trip.id, user_id: current_user.id, balance: 0}])
     # @attendees -> list of attendees only for current trip
@@ -260,6 +252,3 @@ class TripsController < ApplicationController
       params.require(:trip).permit(:name, :accomodation_url, :price_per_night, :number_of_possible_attendees, :start_date, :end_date, :start_location, :end_location, :type_of_trip, :total_possible_cost, :total_confirmed_cost, :started, :ended)
     end
   end 
-      
-
-
