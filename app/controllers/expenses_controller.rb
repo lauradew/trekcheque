@@ -199,16 +199,7 @@ class ExpensesController < ApplicationController
     end
    
     def update_balance
-<<<<<<< HEAD
       @willing_payees = @expense.payees.all
-=======
-<<<<<<< HEAD
-      @willing_payees = @expense.payees.all || params[:expense][:payee][:user_id].select { |uid| uid.length > 0 }
-      # TODO: this is kinda cavalier about the possibility of errors.  ha ha!
-=======
-      @willing_payees = @expense.payees.all
->>>>>>> 2f1d3ece0caeb49b500e78d55292da8825337803
->>>>>>> d592f428ad370d47a1e28d4e5b189474e14f6dea
       @amount = @expense.amount
       @payee_size = @willing_payees.count
       @payee_owes = (@amount / @payee_size) 
@@ -235,4 +226,3 @@ class ExpensesController < ApplicationController
     end
 
 end
-        
