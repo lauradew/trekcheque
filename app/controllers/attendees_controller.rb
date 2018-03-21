@@ -13,18 +13,9 @@ class AttendeesController < ApplicationController
     end
   end
 
-  # GET /attendees/1
-  # GET /attendees/1.json
-  def show
-  end
-
   # GET /attendees/new
   def new
     @attendee = Attendee.new
-  end
-
-  # GET /attendees/1/edit
-  def edit
   end
 
   # POST /attendees
@@ -32,7 +23,7 @@ class AttendeesController < ApplicationController
   def create
     params.each do |key, value|
     end
-    puts "HEY IM A NEW ATETNDEE"
+
     @trips = Trip.all
     @attendee = Attendee.new(attendee_params)
     @attendee.trip_id = params[:trip_id]
@@ -42,7 +33,7 @@ class AttendeesController < ApplicationController
     @trip_length_night = (@trip.end_date - @trip.start_date).to_i
     @price_per_night = @trip.price_per_night
     @total_cost = @price_per_night.to_i * @trip_length_night.to_i
-  
+
     if @attendee.save
       @total_confirmed_accomodation_cost_per_person = @total_cost.to_i / @attendees.size
       @trip.update_attribute(:total_confirmed_cost, @total_confirmed_accomodation_cost_per_person)

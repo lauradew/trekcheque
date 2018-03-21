@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_trip, only: [:show]
-
+  
   # GET /users
   # GET /users.json
   def index
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def show
     @new_trip = Trip.new
     @user_as_attendees = Attendee.where(user_id: params[:id])
-    @trip_types = [["Weekend Getaway", 1], ["Boys Trip", 2], ["Bachelorette", 3], ["Road Trip", 4], ["Adventure", 5]]
+    @trip_types = [["Weekend Getaway", 1], ["Boys Trip", 2], ["Bachelorette", 3], ["Road Trip", 4], ["Adventure", 5], ["Other", 6]]
     @trips_of_user = @user.trips.order('start_date')
     if params[:id].to_i != current_user[:id].to_i
       redirect_to user_path(session[:user_id])
@@ -40,11 +40,11 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
-        redirect_to '/login#login-register' 
-        format.html { render :new }
+        format.html { redirect_to '/login#login-register', notice: 'There was something wrong with your credentials' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # PATCH/PUT /users/1
@@ -82,7 +82,9 @@ class UsersController < ApplicationController
     end
     
     def set_trip
-      @trip = Trip.find(params[:id])
+      if @trip
+        @trip = Trip.find(params[:trip_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
