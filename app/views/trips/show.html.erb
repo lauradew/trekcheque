@@ -142,6 +142,7 @@
 </body>
 
 <script>
+var tripId = <%= @trip.id %>;
 $(document).ready(function() {
   $("#addexpensebtn").on("click", function(event) {
     $("#addexpenseform").toggle("blind", 1000);
