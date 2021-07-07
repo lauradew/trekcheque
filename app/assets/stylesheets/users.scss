@@ -1,31 +1,24 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#top-half {
-	width:100%;
-}
-#background-video {
-	position: fixed;
-	top: 0;
-	right: 0;
-	width: 100%;
-	overflow: hidden;
-	z-index: -999;
-}
+
 .form-inline {
 	float: right;
 }
 body {
-  // padding-top: 90px;
+	background-color: rgba(211, 191, 162, 0.1)
 }
+
 h1.trekcheque {
 	width: 100%;
 	position: absolute;
 	top: 0;
 	left: 50px;
 	font-family: 'Montserrat', sans-serif;
-	font-size: 60px;
+	font-size: 70px;
 	width: -webkit-fill-available;
+	padding-top: 25px;
+	color: rgb(218, 218, 218)
 }
 div.trekcheque {
 	display: inline-block;
@@ -35,7 +28,6 @@ div.trekcheque {
 	top: 1;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 45px;
-	line-height: normal;
 }
 
 #login-header {
@@ -43,35 +35,44 @@ div.trekcheque {
 	float: right;
 	font-size: 30px;
 	padding-right: 75px;
+	padding-top: 30px;
 	font-family: 'Montserrat', sans-serif;
+	color: rgb(218, 218, 218)
 }
 
-#login-header-two {
-	position: relative;
+#scroll-to-top  {
+	position: fixed;
+	bottom: 0;
+	right: 0;
 	float: right;
-	font-size: 30px;
+	font-size: 55px;
+	padding-right: 30px;
+	padding-bottom: 30px;
 	font-family: 'Montserrat', sans-serif;
 }
 
 #login-container {
-	height: -webkit-fill-available;
 	font-family: 'Montserrat', sans-serif;
+	padding-bottom: 30px;
 }
 
 #about {
-	height: -webkit-fill-available;
+	margin-top: 90px;
+	padding-top: 50px;
 	text-align: center;
+	border-bottom: solid 1px;
+	margin-bottom: 50px;
 }
+
 #insta {
-	height: -webkit-fill-available;
+
+	width: -webkit-fill-available;
+	padding-bottom: 50px;
 	text-align: center;
 }
 
-#login-row {
-	padding-top: 25%;
-}
 .panel-login {
-	border-color: #ccc;
+	border-color: #00415d;
 	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
@@ -145,7 +146,7 @@ div.trekcheque {
 	border-color: #ccc;
 }
 .btn-login {
-	background-color: #5a7791;
+	background-color: #004d4d;
 	outline: none;
 	color: #fff;
 	font-size: 20px;
@@ -157,8 +158,8 @@ div.trekcheque {
 .btn-login:hover,
 .btn-login:focus {
 	color: #fff;
-	background-color: #53A3CD;
-	border-color: #53A3CD;
+	background-color: #016868;
+	border-color: #004d4d;
 }
 .forgot-password {
 	text-decoration: underline;
@@ -170,10 +171,10 @@ div.trekcheque {
 	color: #666;
 }
 .btn-register {
-	background-color: #5a7791;
+	background-color: #004d4d;
 	outline: none;
 	color: #fff;
-	font-size: 14px;
+	font-size: 20px;
 	height: auto;
 	font-weight: normal;
 	padding: 14px 0;
@@ -182,8 +183,8 @@ div.trekcheque {
 .btn-register:hover,
 .btn-register:focus {
 	color: #fff;
-	background-color: #53A3CD;
-	border-color: #53A3CD;
+	background-color: #016868;
+	border-color: #004d4d;
 }
 
 //user-page
@@ -192,7 +193,7 @@ div.trekcheque {
 	text-decoration: underline;
 	color: #00415d;
 	grid-area: header;
-	padding-top: 60px;
+	padding-top: 70px;
 	text-align: center;
 	font-size: 3em;
 }
@@ -207,23 +208,21 @@ div.trekcheque {
 	font-size: 1em;
 	text-align: center
 }
-div.container h2 {
+div.container#about h2 {
 	padding-top: 50px;
+	padding-bottom: 30px;
 	border-top: solid 1px;
 }
 div.container#about p {
-	padding-bottom: 50px;
-	border-bottom: solid 1px;
+	margin-bottom: 50px;
 }
 div.container#about {
-	padding-top: 250px;
+	margin-top: 350px;
 }
 div.login-register {
-	height: 500px;
-	background-image: url("login.jpeg")
 }
 .login-register .col-md-6 {
-	padding-top: 100px;
+	padding-top: 150px;
 }
 div.panel.panel-login {
 	border-radius: 20px;
@@ -232,4 +231,62 @@ div.panel.panel-login {
 div.panel-heading {
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
+}
+
+.trekcheque-brief {
+	font-style: italic; 
+	text-align: center; 
+	padding-bottom: 5px;
+	word-wrap: break-word; 
+	width: 100%;
+	font-size: 5em;
+	font-family: 'Montserrat', sans-serif;
+	width: -webkit-fill-available;
+	padding-top: 300px;
+	color: rgb(218, 218, 218);
+	line-height: 80px;
+	padding-left: 250px;
+	padding-right: 250px;
+
+}
+
+.fa-instagram {
+	padding-bottom: 50px;
+}
+
+#how-to {
+	border-bottom: solid 1px;
+	padding-bottom: 50px;
+}
+
+#how-to img {
+    float: left;
+    margin-right: 10px;
+		clear: both;
+		width: 500px;
+		border: 1px solid #00415d;
+		border-radius: 9px;
+		vertical-align: middle;
+
+  display: inline-block;
+}
+
+div.container#how-to p {
+	padding-left: 50px;
+  overflow: auto;
+	display: block;
+}
+
+div.container#how-to h2 {
+	border-top: solid 1px;
+	padding-top: 25px;
+	text-align: center;
+	padding-bottom: 25px;
+}
+
+.home-page-link a {
+	color: rgb(218, 218, 218)
+}
+.home-page-link a:visited {
+	color: rgb(218, 218, 218)
 }

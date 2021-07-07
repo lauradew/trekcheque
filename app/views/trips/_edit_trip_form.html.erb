@@ -1,6 +1,13 @@
 <button id="myBtn">Edit Trip Info</button>
 <div id="edit-trip-modal" class="modal">
 <div class="modal-content">
+<div class="modal-header">
+  <h1>
+  <button type="button" class="close" data-dismiss="modal" id="closeEdit" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  Edit trip:
+  </h1>
+</div>
+
 <body>
 <%= form_with(model: trip, local: true) do |form| %>
   <% if trip.errors.any? %>
@@ -14,7 +21,7 @@
       </ul>
     </div>
   <% end %>
-  <button type="button" class="close" id="closeEdit" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<% if !trip.started %>
 <div class="edit_trip_form">
 <h2>Edit Trip Info</h2>
 <div class="field">
@@ -57,22 +64,48 @@
     <%= form.date_select :end_date, id: :trip_end_date %>
   </div>
 
-  <div class="field">
-    <%= form.hidden_field :total_possible_cost, :value => 0 %>
+  <div class="actions">
+    <%= form.submit %>
   </div>
-  
+  <% else %> 
+
+  <div class="edit_trip_form">
   <div class="field">
-    <%= form.hidden_field :total_confirmed_cost, :value => 0 %>
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :trip_name %>
   </div>
 
+  <div class="field">
+    <%= form.label :accommodation_url %>
+    <%= form.text_field :accomodation_url, id: :trip_accomodation_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_location %>
+    <%= form.text_field :start_location, id: :trip_start_location %>
+  </div>
+
+    <div class="field">
+    <%= form.label :end_location %>
+    <%= form.text_field :end_location, id: :trip_end_location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_of_possible_attendees %>
+    <%= form.number_field :number_of_possible_attendees, :min => 0, id: :trip_number_of_possible_attendees %>
+  </div>
+</body>
+<div class="modal-footer">
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+<% end %>
 </div>
-</body>
 </div>
 </div>
+</div>
+
 <style>
 .modal {
     display: none; /* Hidden by default */
